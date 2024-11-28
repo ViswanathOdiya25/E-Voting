@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aadhar Authentication</title>
+  <link rel="stylesheet" href="C:/Users/1607v/OneDrive/Desktop/New folder/Decentralized-Voting-System-Using-Ethereum-Blockchain/src/css/aadhar.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Aadhar Authentication</h1>
+    <form id="aadharAuthForm">
+      <div class="input-group">
+        <label for="aadhar">Aadhar Number</label>
+        <input
+          type="text"
+          id="aadhar"
+          name="aadhar"
+          maxlength="12"
+          pattern="\d{12}"
+          placeholder="Enter your 12-digit Aadhar number"
+          required
+        >
+      </div>
+      <button type="submit" class="btn">Authenticate</button>
+    </form>
+    <div id="responseMessage"></div>
+  </div>
+  <script src="aadhar-auth.js"></script>
+</body>
+</html>

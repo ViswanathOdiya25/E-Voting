@@ -1,0 +1,59 @@
+<!-- public/signup.html -->
+<link rel="stylesheet" href="C:/Users/1607v/OneDrive/Desktop/New folder/Decentralized-Voting-System-Using-Ethereum-Blockchain/src/css/signup.css">
+<script src="C:/Users/1607v/OneDrive/Desktop/New folder/Decentralized-Voting-System-Using-Ethereum-Blockchain/src/js/signup.js"></script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voter Signup</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .container { max-width: 400px; margin: auto; padding: 20px; }
+        input { width: 100%; padding: 10px; margin: 5px 0; }
+        button { padding: 10px; width: 100%; background-color: #28a745; color: white; border: none; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Voter Signup</h2>
+        <form id="signupForm">
+            <input type="text" id="name" name="name" placeholder="Name" required />
+            <input type="email" id="email" name="email" placeholder="Email" required />
+            <input type="number" id="aadhar" name="aadhar" placeholder="aadhar number" required />
+            <input type="number" id="phone" name="phone" placeholder="phonenumber" required />
+            <input type="password" id="password" name="password" placeholder="Password" required />
+            <input type="text" id="voterId" name="voterId" placeholder="Voter ID" required />
+            <button type="submit">Sign Up</button>
+        </form>
+        <p id="responseMessage"></p>
+    </div>
+    <script>
+        document.getElementById('signupForm').addEventListener('submit', async function(event) {
+            event.preventDefault();
+            const responseMessage = document.getElementById('responseMessage');
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                aadhar: document.getElementById('aadhar').value,
+                phone: document.getElementById('phone').value,
+                password: document.getElementById('password').value,
+                voterId: document.getElementById('voterId').value
+            };
+
+            try {
+                const response = await fetch('/signup', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(formData)
+                });
+                const result = await response.json();
+                responseMessage.textContent = result.message;
+            } catch (error) {
+                responseMessage.textContent = 'Error registering voter';
+            }
+        });
+    </script>
+<script src="src\js\signup.js" type="module"></script>
+</body>
+</html>
